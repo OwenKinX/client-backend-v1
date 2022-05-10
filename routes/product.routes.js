@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 
 require("dotenv").config();
-require("../config/db").connect();
 
 const Product = require('../model/Porduct');
 const logger = require('../utils/logger');

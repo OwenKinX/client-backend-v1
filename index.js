@@ -18,6 +18,6 @@ app.use((err,req,res,next) => {
 })
 
 server.listen(API_PORT, () => {
-    console.log(`Server is running on http://localhost:${API_PORT}`);
-    logger.info(`Server started and running on http://localhost::${API_PORT}`)
+    console.log(`Server is running on ${API_PORT}`);
+    logger.info(`Server started and running on ${API_PORT}`)
 })
