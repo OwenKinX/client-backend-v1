@@ -1,19 +1,13 @@
 const jwt = require('jsonwebtoken')
-
 const config = process.env
 
-const verifyToken = (req, res, next) => {
-    const token = req.body.token || req.query.token || req.headers['x-access-token']
-
-    if(!token) {
-        return res.status(403).sen('A token is required for authentication');
-    }
+const checkAuth = (req, res, next) => {
     try{
-        const decode = jwt.verify(token, config.TOKEN_KEY)
-        req.user = decode
+        const token = req.headers.authorization.split(" ")[1];
+        jwt.verify(token, config.TOKEN_KEY)
+        next();
     }catch(error){
-        return res.status(401).send('Invalid Token');
+        return res.status(401).json({ message: "[ ບໍ່ສາມາດອະນຸຍາດ / Authorization Failed! ]" });
     }
-    return next()
 }
-module.exports = verifyToken
+module.exports = checkAuth

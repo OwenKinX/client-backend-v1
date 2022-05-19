@@ -36,20 +36,11 @@ const CustomersSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    address: {
-        province: String,
-        district: String,
-        village: String
-    },
-    image: {
-        type: String
-    },
-    token: {
-        type: String,
-    },
-})
+    province: String,
+    district: String,
+    village: String
+}, {timestamps:true})
 
-// CustomersSchema.plugin(AutoIncrement)
 CustomersSchema.plugin(AutoIncrement, {inc_field: 'cus_id'})
 
 const Customers = mongoose.model('Customers', CustomersSchema);

@@ -6,9 +6,9 @@ exports.connect = () => {
     mongoose.connect(MONGO_URI, {
         useNewUrlParser: true,
     }).then(() => {
-        console.log('Database connected success');
+        console.log("[ Database connected success ]");
     }).catch((error) => {
-        console.log('Error connecting to database');
+        console.log("[ Database connection failed ]");
         console.error(error);
         process.exit(1)
     })
